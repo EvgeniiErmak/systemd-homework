@@ -1,0 +1,12 @@
+# Configuration for spawn-fcgi.service
+# Place it to /etc/default/spawn-fcgi
+# Mirrors the variables from the original SysV init script
+
+PHP_CGI=/usr/bin/php-cgi
+SPAWNFCGI=/usr/bin/spawn-fcgi
+SERVER_IP=127.0.0.1
+SERVER_PORT=9000
+SERVER_USER=www-data
+SERVER_GROUP=www-data
+SERVER_CHILDREN=5
+PIDFILE=/var/run/php_cgi.pid

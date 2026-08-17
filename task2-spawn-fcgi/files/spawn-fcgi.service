@@ -1,0 +1,14 @@
+[Unit]
+Description=PHP FastCGI process manager (spawn-fcgi), converted from SysV init script
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/default/spawn-fcgi
+PIDFile=/var/run/php_cgi.pid
+ExecStart=/usr/bin/spawn-fcgi -a ${SERVER_IP} -p ${SERVER_PORT} -u ${SERVER_USER} -g ${SERVER_GROUP} -P ${PIDFILE} -C ${SERVER_CHILDREN} -f ${PHP_CGI}
+ExecStop=/bin/kill -QUIT $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
